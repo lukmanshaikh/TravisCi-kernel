@@ -7,7 +7,8 @@ CONFIG=land_defconfig
 CORES=$(grep -c ^processor /proc/cpuinfo)
 THREAD="-j$CORES"
 
-echo -e "\n(i) Cloning toolcahins if folder not exist..."
+echo -e "\n(i) Cloning toolcahins ..."
+rm -rf $PWD/aarch64-linux-android-4.9
 git clone https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9
 
 echo -e "\n(i) Cloning clang if folder not exist..."
