@@ -17,10 +17,10 @@ git clone https://github.com/lukmanshaikh/aosp-clang clang
 # Export
 export ARCH=arm64
 export SUBARCH=arm64
-PATH="$PWD/clang/bin:$PWD/aarch64-linux-android-4.9/bin/:${PATH}"
+export PATH="$PWD/clang/bin:$PWD/aarch64-linux-android-4.9/bin/:${PATH}"
 export CC=clang
-CLANG_TRIPLE=aarch64-linux-gnu-
-CROSS_COMPILE=$PWD/aarch64-linux-android-4.9/bin/aarch64-linux-android-
+export CLANG_TRIPLE=aarch64-linux-gnu-
+export CROSS_COMPILE=$PWD/aarch64-linux-android-4.9/bin/aarch64-linux-android-
 export KBUILD_BUILD_USER=luqman
 export KBUILD_BUILD_HOST=unique
 make  O=out $CONFIG $THREAD
