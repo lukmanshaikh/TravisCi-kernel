@@ -9,7 +9,7 @@ before_script:
   - curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
   - chmod a+x ~/bin/repo
 script:
-  - cd $HOME && git clone -b stock-8.0  https://github.com/raza231198/rebase_kernel_asus_msm8937 kernel
+  - cd $HOME && git clone -b android-8.1 https://github.com/lukmanshaikh/kernel_xiaomi_msm8937 kernel
   - cd $HOME && git clone https://github.com/raza231198/build_kernel build_kernel
   - cp $HOME/build_kernel/build.sh $HOME/kernel/build.sh
   - cd $HOME/kernel && chmod +x build.sh
@@ -17,17 +17,17 @@ script:
     cd $HOME/kernel
     source build.sh
     make -j4 O=out
-  - cp $HOME/build_kernel/strip.sh $HOME/kernel/strip.sh
-  - cd $HOME/kernel && chmod +x strip.sh && source strip.sh
+  - cp $HOME/build_kernel/zip.sh $HOME/kernel/zip.sh
+  - cd $HOME/kernel && chmod +x zip.sh && source zip.sh
 deploy:
   skip_cleanup: true
   provider: releases
   api_key: "$GITHUB_TOKEN"
   file_glob: true
-  file: $HOME/kernel/AnyKernel3/*.zip
+  file: $HOME/kernel/AnyKernel2/*.zip
   on:
     tags: false
-    repo: raza231198/build_kernel
+    repo: lukmanshaikh/TravisCi-kernel
     branch: master
 branches:
   except:
