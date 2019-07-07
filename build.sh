@@ -6,16 +6,20 @@ CONFIG_DIR=$KERNEL_DIR/arch/arm64/configs
 CONFIG=land_defconfig
 CORES=$(grep -c ^processor /proc/cpuinfo)
 THREAD="-j$CORES"
-CROSS_COMPILE+="ccache "
 CROSS_COMPILE+="$PWD/aarch64-linux-android-4.9/bin/aarch64-linux-android-"
+CLANG_TRIPLE+="$PWD/aarch64-linux-android-4.9/bin/aarch64-linux-gnu-"
 
 echo -e "\n(i) Cloning toolcahins if folder not exist..."
 git clone https://github.com/raza231198/aarch64-linux-android-4.9
 
+echo -e "\n(i) Cloning clang if folder not exist..."
+git clone https://github.com/lukmanshaikh/aosp-clang clang
+
 # Export
 export ARCH=arm64
 export SUBARCH=arm64
-export PATH=/usr/lib/ccache:$PATH
+export CC=clang
+export CLANG_TRIPLE
 export CROSS_COMPILE
 export KBUILD_BUILD_USER=luqman
 export KBUILD_BUILD_HOST=unique
