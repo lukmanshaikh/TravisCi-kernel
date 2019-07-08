@@ -12,4 +12,4 @@ ZIP_DIR=$KERNEL_DIR/AnyKernel2
 
 		cd $ZIP_DIR
 		cp $KERN_IMG $ZIP_DIR/zImage
-		make normal
+		zip -r9 Unique_land-treble.zip * -x Unique_land-treble.zip
