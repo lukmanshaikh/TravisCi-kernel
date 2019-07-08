@@ -15,6 +15,7 @@ echo -e "\n(i) Cloning clang if folder not exist..."
 git clone https://github.com/lukmanshaikh/aosp-clang clang
 
 # Export
+export make CONFIG_NO_ERROR_ON_MISMATCH=y
 export ARCH=arm64
 export SUBARCH=arm64
 export PATH="$PWD/clang/bin:$PWD/aarch64-linux-android-4.9/bin/:${PATH}"
